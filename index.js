@@ -5,6 +5,7 @@ const socketIo = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
+let port = process.env.PORT || 3000;
 
 const fps = 60;
 const funcs = [];
@@ -274,8 +275,8 @@ io.on('connect', (client) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log('listening on *:3000');
+server.listen(port, () => {
+  console.log('listening on *:' + port);
 });
 
 class Vector3{
