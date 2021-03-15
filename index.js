@@ -164,7 +164,7 @@ io.on('connect', (client) => {
       const callback = obj[name];
       if(callback)
       {
-        socket.on(name, data => {
+        client.on(name, data => {
           callback(data);
         });
         continue;
