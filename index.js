@@ -164,11 +164,13 @@ io.on('connect', (client) => {
       const callback = obj[name];
       if(callback)
       {
+        console.log("whi");
         client.on(name, data => {
           callback(data);
         });
         continue;
       }
+      console.log("hi");
       returnToNet(name);
     }
   };
