@@ -156,6 +156,7 @@ io.on('connect', (client) => {
   });
   let returnToNet = (name) => {
     client.on(name, data => {
+      console.log("hi");
       client.emitV(name, data, 1);
     });
   }; 
@@ -164,13 +165,11 @@ io.on('connect', (client) => {
       var callback = obj[name];
       if(typeof callback === "function")
       {
-        console.log("whi");
         client.on(name, data => {
           callback(data);
         });
         continue;
       }
-      console.log("hi");
       returnToNet(name);
     }
   };
