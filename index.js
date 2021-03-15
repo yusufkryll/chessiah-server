@@ -154,7 +154,27 @@ io.on('connect', (client) => {
       }
     }
   });
-
+  let returnToNet = (name) => {
+    client.on(name, data => {
+      client.emitV(name, data, 1);
+    });
+  }; 
+  let Use = (obj) => {
+    for (const name in obj) {
+      const callback = obj[name];
+      if(callback)
+      {
+        socket.on(name, data => {
+          callback(data);
+        });
+        continue;
+      }
+      returnToNet(name);
+    }
+  };
+  Use({
+    Instantiate,
+  });
   client.on("MovePiece", data => {
     console.log(data);
     client.emitV("MovePiece", {
@@ -163,6 +183,9 @@ io.on('connect', (client) => {
       y: data.y,
       z: data.z
     }, 1);
+  });
+  client.on("Instantiate", data => {
+    client.emitV("Instantiate", data, 1);
   });
   client.on("chatmsg", data => {
     client.emitV("chatmsg", data, 1);
