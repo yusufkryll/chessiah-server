@@ -161,8 +161,8 @@ io.on('connect', (client) => {
   }; 
   let Use = (obj) => {
     for (const name in obj) {
-      const callback = obj[name];
-      if(callback != {})
+      var callback = obj[name];
+      if(typeof callback === "function")
       {
         console.log("whi");
         client.on(name, data => {
