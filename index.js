@@ -175,15 +175,7 @@ io.on('connect', (client) => {
   };
   Use({
     Instantiate: {},
-  });
-  client.on("MovePiece", data => {
-    console.log(data);
-    client.emitV("MovePiece", {
-      id: data.id,
-      x: data.x,
-      y: data.y,
-      z: data.z
-    }, 1);
+    MovePiece: {},
   });
   client.on("Instantiate", data => {
     client.emitV("Instantiate", data, 1);
