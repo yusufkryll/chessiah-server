@@ -162,7 +162,7 @@ io.on('connect', (client) => {
   let Use = (obj) => {
     for (const name in obj) {
       const callback = obj[name];
-      if(callback)
+      if(callback != {})
       {
         console.log("whi");
         client.on(name, data => {
