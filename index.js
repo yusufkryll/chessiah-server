@@ -173,7 +173,7 @@ io.on('connect', (client) => {
     }
   };
   Use({
-    Instantiate,
+    Instantiate: {},
   });
   client.on("MovePiece", data => {
     console.log(data);
