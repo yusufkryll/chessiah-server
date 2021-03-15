@@ -7,7 +7,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 let port = process.env.PORT || 3000;
 
-var roomStartLength = 1;
+var roomStartLength = 2;
 var roomEndLength = 0;
 
 const fps = 60;
