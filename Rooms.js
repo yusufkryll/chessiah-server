@@ -29,6 +29,8 @@ module.exports = class Rooms
         var roomToJoin = this.CreateRoom(client);
         this.rooms[roomToJoin].players.push(client.id);
         client.join(roomToJoin.toString());
+        client.send("find-game");
+        client.send("spawn");
     }
     CreateRoom = (obj) =>
     {
