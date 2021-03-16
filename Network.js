@@ -10,7 +10,7 @@ module.exports = class Network
         this.WhenConnect(this.ConnectEvent);
         
     }
-    ConnectEvent(client)
+    ConnectEvent = (client) =>
     {
         this.SetEvents(client);
         client.when = (name, callback) => {
@@ -32,13 +32,13 @@ module.exports = class Network
         };
         this.onConnect(client);
     }
-    WhenConnect(callback)
+    WhenConnect = (callback) =>
     {
         this.io.on('connect', (client) => {
             callback(client);
         });
     }
-    Start(port)
+    Start = (port) =>
     {
         const http = require('http');
         const express = require('express');
@@ -49,7 +49,7 @@ module.exports = class Network
         this.port = port;
         this.Listen();
     }
-    Listen()
+    Listen = () =>
     {
         this.server.listen(this.port, () => {
             console.log('listening on *:' + this.port);
