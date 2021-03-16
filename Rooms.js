@@ -4,11 +4,11 @@ module.exports = class Rooms
     {
         this.rooms = [];
     }
-    Get(index)
+    Get = (index) =>
     {
         return this.rooms[index];
     }
-    JoinRandom(client)
+    JoinRandom = (client) =>
     {
         for(var index in this.rooms)
         {
@@ -22,18 +22,22 @@ module.exports = class Rooms
                 {
                     console.log("room starting...");
                     client.send("spawn");
+                    return;
                 }
             }
         }
+        var roomToJoin = this.CreateRoom(client);
+        this.rooms[roomToJoin].players.push(client.id);
+        client.join(roomToJoin.toString());
     }
-    CreateRoom(obj)
+    CreateRoom = (obj) =>
     {
         var defaultRoomProperties = {
             name: "NewRoom",
             roomStartLength: 2,
             players: []
         };
-        var index = this.rooms.push(defaultRoomProperties) - 1;
-        return Get(index);
+        var index = this.rooms.push(obj || defaultRoomProperties) - 1;
+        return index;
     }
 }
