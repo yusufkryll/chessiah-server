@@ -55,7 +55,7 @@ module.exports = class Network
             console.log('listening on *:' + this.port);
         });
     }
-    SetEvents(client)
+    SetEvents = (client) =>
     {
         this.events += {
             disconnect: data => {
