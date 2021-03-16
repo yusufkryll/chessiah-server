@@ -12,7 +12,6 @@ module.exports = class Network
     }
     ConnectEvent = (client) =>
     {
-        this.SetEvents(client);
         client.when = (name, callback) => {
             client.on(name, callback);
         };
@@ -30,6 +29,7 @@ module.exports = class Network
                 }
             }, 1);
         };
+        this.SetEvents(client);
         this.onConnect(client);
     }
     WhenConnect = (callback) =>
