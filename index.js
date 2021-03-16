@@ -9,12 +9,17 @@
 
 const Network = require('./Network');
 
-var network = new Network(process.env.PORT || 3000, {
+var port = process.env.PORT || 3000;
+
+var events = {
   Instantiate: {},
   MovePiece: {},
-});
+};
+
+var network = new Network(port, events);
+
 network.onConnect = playerData => {
-  
+
 };
 
 
