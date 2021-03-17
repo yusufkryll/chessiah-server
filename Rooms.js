@@ -28,7 +28,7 @@ module.exports = class Rooms
                 if(Object.keys(room.players).length >= room.roomStartLength)
                 {
                     console.log("room starting...");
-                    client.send("spawn");
+                    client.send("spawn", null, 1);
                 }
                 return;
             }
