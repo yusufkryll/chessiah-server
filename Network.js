@@ -4,8 +4,9 @@ module.exports = class Network
     {
         const Rooms = require('./Rooms');
         this.events = events;
-        this.rooms = new Rooms();
+        this.rooms = new Rooms(this);
         this.onConnect = () => { console.log("Connection successfully!") };
+        this.onConnect = () => { console.log("Room started successfully!") };
         this.Start(port);
         this.WhenConnect(this.ConnectEvent);
         
