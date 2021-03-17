@@ -28,6 +28,7 @@ network.onConnect = client => {
 };
 
 network.onRoomStarted = room => {
+  console.log("hellfdsgfdfs");
   const colors = ["white", "black"].shuffle();
   room.players[0].send("color", colors[0]);
   room.players[1].send("color", colors[1]);
