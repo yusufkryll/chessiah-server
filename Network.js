@@ -61,8 +61,8 @@ module.exports = class Network
     {
         var defaultEvents = {
             disconnect: data => {
-                delete this.rooms[0].players[client];
-                console.log('user disconnected');
+                delete this.rooms[0];
+                console.log('user disconnected. game end.');
             },
             'status-ping': data => {
                 client.send('status-pong', data);
