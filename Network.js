@@ -71,7 +71,8 @@ module.exports = class Network
             },
         };
         // this.events = Object.assign(defaultEvents, this.events);
-        console.table({...this.events, ...defaultEvents});
+        this.events = {...this.events, ...defaultEvents};
+        console.table(this.events);
         for (const name in this.events) {
             var callback = this.events[name];
             if(typeof callback === "function")
