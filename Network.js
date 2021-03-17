@@ -64,14 +64,14 @@ module.exports = class Network
                 delete this.rooms[client.roomNumber];
                 console.log('user disconnected. game end.');
             },
-            "gameStarted": data => {
+            gameStarted: data => {
                 console.log("hello");
                 this.onGameStarted(this.rooms[client.roomNumber]);
             },
             'status-ping': data => {
                 client.send('status-pong', data);
             },
-            "find-game": data => {
+            gameFinded: data => {
                 if(data == "transport close") return;
                 console.log(" start to find game...");
                 this.rooms.JoinRandom(client);
