@@ -19,6 +19,7 @@ module.exports = class Rooms
                 var player = room.players[p];
                 if(player.id == client.id) return;
             }
+            console.table(room.players);
             if(Object.keys(room.players).length < room.roomStartLength)
             {
                 this.rooms[index].players.push(client);
