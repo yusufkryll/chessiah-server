@@ -19,6 +19,7 @@ module.exports = class Rooms
                 this.rooms[index].players.push(client.id);
                 client.join(index.toString());
                 client.send("find-game");
+                console.table(this.rooms);
                 if(Object.keys(room.players).length >= room.roomStartLength)
                 {
                     console.log("room starting...");
@@ -30,7 +31,6 @@ module.exports = class Rooms
         console.log("hello");
         var roomToJoin = this.CreateRoom();
         this.rooms[roomToJoin].players.push(client.id);
-        console.table(this.rooms[roomToJoin].players);
         client.join(roomToJoin.toString());
         client.send("find-game");
     }
