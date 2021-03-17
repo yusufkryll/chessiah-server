@@ -23,8 +23,8 @@ module.exports = class Rooms
                 {
                     console.log("room starting...");
                     client.send("spawn");
-                    return;
                 }
+                return;
             }
         }
         console.log("hello");
