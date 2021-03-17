@@ -24,12 +24,11 @@ var events = {
 var network = new Network(port, events);
 
 network.onConnect = client => {
-  const colors = ["white", "black"].shuffle();
-  client.send("color");
+
 };
 
 network.onRoomStarted = room => {
-  console.table(room);
+  
 };
 
 network.onGameStarted = room => {
