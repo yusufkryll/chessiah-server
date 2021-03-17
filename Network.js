@@ -57,19 +57,20 @@ module.exports = class Network
     }
     SetEvents = (client) =>
     {
-        // this.events += {
-        //     disconnect: data => {
-        //         delete this.rooms[0].players[client.id];
-        //         console.log('user disconnected');
-        //     },
-        //     'status-ping': data => {
-        //         client.send('status-pong', data);
-        //     },
-        //     "find-game": data => {
-        //         console.log(data + " start to find game...");
-        //         this.rooms.JoinRandom(client);
-        //     },
-        // };
+        var defaultEvents = {
+            disconnect: data => {
+                delete this.rooms[0].players[client.id];
+                console.log('user disconnected');
+            },
+            'status-ping': data => {
+                client.send('status-pong', data);
+            },
+            "find-game": data => {
+                console.log(data + " start to find game...");
+                this.rooms.JoinRandom(client);
+            },
+        };
+        this.events = Object.assign(defaultEvents, this.events);
         console.log(JSON.stringify(this.events));
         for (const name in this.events) {
             var callback = this.events[name];
