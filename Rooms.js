@@ -19,10 +19,10 @@ module.exports = class Rooms
                 var player = room.players[p];
                 if(player.id == client.id) return;
             }
-            console.table(room.players);
+            console.table(room);
             if(Object.keys(room.players).length < room.roomStartLength)
             {
-                this.rooms[index].players.push({client});
+                this.rooms[index].players.push(client);
                 client.join(index.toString());
                 client.send("find-game");
                 if(Object.keys(room.players).length >= room.roomStartLength)
@@ -34,7 +34,7 @@ module.exports = class Rooms
             }
         }
         var roomToJoin = this.CreateRoom();
-        this.rooms[roomToJoin].players.push({client});
+        this.rooms[roomToJoin].players.push(client);
         client.join(roomToJoin.toString());
         client.send("find-game");
     }
