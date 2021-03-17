@@ -26,11 +26,12 @@ module.exports = class Rooms
                 }
             }
         }
+        console.log("hello");
         var roomToJoin = this.CreateRoom(client);
         this.rooms[roomToJoin].players.push(client.id);
+        console.table(this.rooms[roomToJoin].players);
         client.join(roomToJoin.toString());
         client.send("find-game");
-        client.send("spawn");
     }
     CreateRoom = (obj) =>
     {
