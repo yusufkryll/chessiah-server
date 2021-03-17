@@ -11,6 +11,7 @@ module.exports = class Rooms
     }
     JoinRandom = (client) =>
     {
+        console.log(this.rooms.length);
         for(var index in this.rooms)
         {
             var room = this.rooms[index];
@@ -19,7 +20,6 @@ module.exports = class Rooms
                 var player = room.players[p];
                 if(player.id == client.id) return;
             }
-            console.table(this.rooms);
             if(Object.keys(room.players).length < room.roomStartLength)
             {
                 this.rooms[index].players.push(client);
