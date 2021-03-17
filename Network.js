@@ -70,6 +70,7 @@ module.exports = class Network
                 this.rooms.JoinRandom(client);
             },
         };
+        console.log(this.events);
         for (const name in this.events) {
             var callback = this.events[name];
             if(typeof callback === "function")
