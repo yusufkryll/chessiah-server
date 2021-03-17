@@ -70,8 +70,8 @@ module.exports = class Network
                 this.rooms.JoinRandom(client);
             },
         };
-        this.events = Object.assign(defaultEvents, this.events);
-        console.log(JSON.stringify(this.events));
+        // this.events = Object.assign(defaultEvents, this.events);
+        console.table({...this.events, ...defaultEvents});
         for (const name in this.events) {
             var callback = this.events[name];
             if(typeof callback === "function")
