@@ -60,7 +60,7 @@ module.exports = class Network
     {
         var defaultEvents = {
             disconnect: data => {
-                delete this.rooms[0].players[client.id];
+                delete this.rooms[0].players[client];
                 console.log('user disconnected');
             },
             'status-ping': data => {

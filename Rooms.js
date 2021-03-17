@@ -16,24 +16,24 @@ module.exports = class Rooms
             var room = this.rooms[index];
             for(var p in room.players)
             {
-                var playerID = room.players[p];
-                if(playerID == client.id) return;
+                var player = room.players[p];
+                if(player.id == client.id) return;
             }
             if(Object.keys(room.players).length < room.roomStartLength)
             {
-                this.rooms[index].players.push(client.id);
+                this.rooms[index].players.push(client);
                 client.join(index.toString());
                 client.send("find-game");
                 if(Object.keys(room.players).length >= room.roomStartLength)
                 {
                     client.send("spawn", null, 1);
-                    this.network.onRoomStarted(room.players);
+                    this.network.onRoomStarted(room);
                 }
                 return;
             }
         }
         var roomToJoin = this.CreateRoom();
-        this.rooms[roomToJoin].players.push(client.id);
+        this.rooms[roomToJoin].players.push(client);
         client.join(roomToJoin.toString());
         client.send("find-game");
     }

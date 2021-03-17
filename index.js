@@ -1,3 +1,17 @@
+Array.prototype.shuffle = function () {
+  let input = this;
+
+  for (let i = input.length - 1; i >= 0; i--) {
+
+    let randomIndex = Math.floor(Math.random() * (i + 1));
+    let itemAtIndex = input[randomIndex];
+
+    input[randomIndex] = input[i];
+    input[i] = itemAtIndex;
+  }
+  return input;
+}
+
 const Network = require('./Network');
 
 var port = process.env.PORT || 3000;
@@ -13,6 +27,9 @@ network.onConnect = client => {
   
 };
 
-network.onRoomStarted = clients => {
-  console.table(clients);
+network.onRoomStarted = room => {
+  console.table(room);
+  const colors = ["white", "black"].shuffle();
+  room.players[0].send("color", colors[0]);
+  room.players[1].send("color", colors[1]);
 };
