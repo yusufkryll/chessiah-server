@@ -27,7 +27,7 @@ module.exports = class Rooms
             }
         }
         console.log("hello");
-        var roomToJoin = this.CreateRoom(client);
+        var roomToJoin = this.CreateRoom();
         this.rooms[roomToJoin].players.push(client.id);
         console.table(this.rooms[roomToJoin].players);
         client.join(roomToJoin.toString());
