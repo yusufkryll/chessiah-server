@@ -6,7 +6,8 @@ module.exports = class Network
         this.events = events;
         this.rooms = new Rooms(this);
         this.onConnect = () => { console.log("Connection successfully!") };
-        this.onConnect = () => { console.log("Room started successfully!") };
+        this.onRoomStarted = () => { console.log("Room started successfully!") };
+        this.onGameStarted = () => { console.log("Game started successfully!") };
         this.Start(port);
         this.WhenConnect(this.ConnectEvent);
         
@@ -16,7 +17,6 @@ module.exports = class Network
         client.when = (name, callback) => {
             client.on(name, callback);
         };
-        client.send("color", {color: "white"}, 1);
         client.send = (name, data = null, type = 0) => {
             setTimeout(() => {
                 switch (type) {
@@ -61,8 +61,11 @@ module.exports = class Network
     {
         var defaultEvents = {
             disconnect: data => {
-                delete this.rooms[0];
+                delete this.rooms[client.roomNumber];
                 console.log('user disconnected. game end.');
+            },
+            gameStarted: data => {
+                this.onGameStarted(this.rooms[client.roomNumber]);
             },
             'status-ping': data => {
                 client.send('status-pong', data);

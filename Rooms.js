@@ -24,6 +24,7 @@ module.exports = class Rooms
             {
                 this.rooms[index].players.push(client);
                 client.join(index.toString());
+                client.roomNumber = index;
                 client.send("find-game");
                 if(Object.keys(room.players).length >= room.roomStartLength)
                 {
