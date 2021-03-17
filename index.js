@@ -18,10 +18,7 @@ var port = process.env.PORT || 3000;
 
 var events = {
   Instantiate: {},
-  MovePiece: {},
-  GameStart: (data) => {
-    console.log(data);
-  }
+  MovePiece: {}
 };
 
 var network = new Network(port, events);
@@ -31,12 +28,11 @@ network.onConnect = client => {
 };
 
 network.onRoomStarted = room => {
-  
+  const colors = ["white", "black"].shuffle();
+  room.players[0].send("color", colors[0]);
+  room.players[1].send("color", colors[1]);
 };
 
 network.onGameStarted = room => {
   console.log("helloo");
-  const colors = ["white", "black"].shuffle();
-  room.players[0].send("color", colors[0]);
-  room.players[1].send("color", colors[1]);
 };
