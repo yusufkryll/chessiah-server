@@ -66,6 +66,7 @@ module.exports = class Network
                 client.send('status-pong', data);
             },
             "find-game": data => {
+                if(data == "transport close") return;
                 console.log(data + " start to find game...");
                 this.rooms.JoinRandom(client);
             },
