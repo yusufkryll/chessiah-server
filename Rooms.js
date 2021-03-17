@@ -14,7 +14,7 @@ module.exports = class Rooms
         for(var index in this.rooms)
         {
             var room = this.rooms[index];
-            if(room.players == null) return; 
+            if(room.players == null) break; 
             for(var p in room.players)
             {
                 var player = room.players[p];
