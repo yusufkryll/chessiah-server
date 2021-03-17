@@ -25,7 +25,7 @@ module.exports = class Rooms
                 this.rooms[index].players.push(client);
                 client.join(index.toString());
                 client.roomNumber = index;
-                client.send("find-game");
+                client.send("gameFinded");
                 if(Object.keys(room.players).length >= room.roomStartLength)
                 {
                     client.send("spawn", null, 1);
@@ -37,7 +37,7 @@ module.exports = class Rooms
         var roomToJoin = this.CreateRoom();
         this.rooms[roomToJoin].players.push(client);
         client.join(roomToJoin.toString());
-        client.send("find-game");
+        client.send("gameFinded");
     }
     CreateRoom = (obj) =>
     {
