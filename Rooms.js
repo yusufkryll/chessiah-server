@@ -11,8 +11,7 @@ module.exports = class Rooms
     }
     JoinRandom = (client) =>
     {
-        console.log(this.rooms.length);
-        for(var index in this.rooms)
+        if(this.rooms.length > 0) for(var index in this.rooms)
         {
             var room = this.rooms[index];
             for(var p in room.players)
