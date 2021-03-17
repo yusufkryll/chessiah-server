@@ -12,7 +12,7 @@ module.exports = class Rooms
     {
         for(var index in this.rooms)
         {
-            var room = rooms[index];
+            var room = this.rooms[index];
             if(Object.keys(room.players).length < room.roomStartLength)
             {
                 console.log("finded");
