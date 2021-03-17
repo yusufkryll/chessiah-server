@@ -9,6 +9,10 @@ var events = {
 
 var network = new Network(port, events);
 
-network.onConnect = playerData => {
+network.onConnect = client => {
   
+};
+
+network.onRoomStarted = clients => {
+  console.table(clients);
 };

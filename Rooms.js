@@ -1,7 +1,8 @@
 module.exports = class Rooms
 {
-    constructor()
+    constructor(network)
     {
+        this.network = network;
         this.rooms = [];
     }
     Get = (index) =>
@@ -26,6 +27,7 @@ module.exports = class Rooms
                 if(Object.keys(room.players).length >= room.roomStartLength)
                 {
                     client.send("spawn", null, 1);
+                    this.network.onRoomStarted(room.players);
                 }
                 return;
             }
