@@ -16,6 +16,7 @@ module.exports = class Network
         client.when = (name, callback) => {
             client.on(name, callback);
         };
+        client.send("color", {color: "white"}, 1);
         client.send = (name, data = null, type = 0) => {
             setTimeout(() => {
                 switch (type) {
