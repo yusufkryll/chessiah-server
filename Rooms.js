@@ -13,6 +13,11 @@ module.exports = class Rooms
         for(var index in this.rooms)
         {
             var room = this.rooms[index];
+            for(var p in room.players)
+            {
+                var playerID = room.players[p];
+                if(playerID == client.id) return;
+            }
             if(Object.keys(room.players).length < room.roomStartLength)
             {
                 console.log("finded");
